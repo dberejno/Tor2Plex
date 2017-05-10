@@ -54,6 +54,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DirectoryExplorerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -62,6 +66,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DirectoryExplorerWindow.xaml.cs">
+      <DependentUpon>DirectoryExplorerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Directory\Data\DirectoryItem.cs" />
+    <Compile Include="Directory\Data\DirectoryItemType.cs" />
+    <Compile Include="Directory\DirectoryStructure.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -17,7 +17,7 @@
                 <Label Content="Torrents Directory"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBox Name="torrentDir" Padding="2" Width="190" Margin="5 0"></TextBox>
-                    <Button Content="Browse"/>
+                    <Button Content="Browse" Click="Open_Directory_Browser"/>
                 </StackPanel>               
             </StackPanel>
 

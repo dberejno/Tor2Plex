@@ -24,5 +24,12 @@ namespace Tor2Plex
         {
             InitializeComponent();
         }
+
+        private void Open_Directory_Browser(object sender, RoutedEventArgs e)
+        {
+            DirectoryExplorerWindow explorer = new DirectoryExplorerWindow();
+            explorer.Show();
+        }
+
     }
 }
