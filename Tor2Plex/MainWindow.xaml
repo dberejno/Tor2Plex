@@ -1,0 +1,40 @@
+﻿<Window x:Class="Tor2Plex.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tor2Plex"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="200" Width="525">
+    <Border Margin="10">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/> 
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0">
+                <Label Content="Torrents Directory"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="torrentDir" Padding="2" Width="190" Margin="5 0"></TextBox>
+                    <Button Content="Browse"/>
+                </StackPanel>               
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <Label Content="Movies Directory"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="movieDir" Padding="2" Width="190" Margin="5 0"></TextBox>
+                    <Button Content="Browse"/>
+                </StackPanel>
+                
+                <Label Content="Shows Directory"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="showDir" Padding="2" Width="190" Margin="5 0"></TextBox>
+                    <Button Content="Browse"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+    </Border>
+</Window>
