@@ -33,61 +33,43 @@ namespace Tor2Plex
         public static IEnumerable<DirectoryItem> GetDirectoryContents(string fullPath)
         {
             var items = new List<DirectoryItem>();
-
-            // Look for directories
-            try
-            {
-                var dirs = System.IO.Directory.GetDirectories(fullPath);
-
-                items.AddRange(dirs.Select(dir => new DirectoryItem {
-                    FullPath = dir,
-                    Type = DirectoryItemType.Folder
-                }));
-            } 
-            catch { }
-
-            // Look for files
-            try
-            {
-                var files = System.IO.Directory.GetFiles(fullPath);
-
-                items.AddRange(files.Select(file => new DirectoryItem {
-                    FullPath = file,
-                    Type = DirectoryItemType.File
-                }));
-            } 
-            catch { }
-
-
+            items.AddRange(GetDirectoryContents(DirectoryItemType.Folder, fullPath));
+            items.AddRange(GetDirectoryContents(DirectoryItemType.File, fullPath));
             return items;
         }
 
+
+        /// <summary>
+        /// Retrieves contents of directory of specific type 
+        /// </summary>
+        /// <param name="type">DirectoryItemType</param>
+        /// <param name="fullPath">Full path of directory</param>
+        /// <returns></returns>
         private static IEnumerable<DirectoryItem> GetDirectoryContents(DirectoryItemType type, string fullPath)
         {
-            var lstItems = new List<DirectoryItem>();
+            var contents = new List<DirectoryItem>();
 
             try
             {
-                var items = new List;
+                var items = new List<string>();
 
                 if (type == DirectoryItemType.Folder)
                 {
-                    items = System.IO.Directory.GetDirectories(fullPath);
+                    items = System.IO.Directory.GetDirectories(fullPath).ToList();
                 }
                 else if(type == DirectoryItemType.File)
                 {
-                    items = System.IO.Directory.GetFiles(fullPath);
+                    items = System.IO.Directory.GetFiles(fullPath).ToList(); ;
                 }
-                           
-
-                lstItems.AddRange(items.Select(item => new DirectoryItem {
+                
+                contents.AddRange(items.Select(item => new DirectoryItem {
                     FullPath = item,
                     Type = type
                 }));
             } 
             catch { }
 
-            return lstItems;
+            return contents;
         }
 
         /// <summary>
