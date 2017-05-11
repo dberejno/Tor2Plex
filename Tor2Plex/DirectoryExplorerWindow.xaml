@@ -6,22 +6,27 @@
         xmlns:local="clr-namespace:Tor2Plex"
         mc:Ignorable="d"        
         Title="Directory Explorer" Height="300" Width="300">
-    <Grid>        
-        <TreeView Name="FolderView">
-            <TreeView.Resources>
+    
+        <Grid>
+            <TreeView Name="FolderView" ItemsSource="{Binding Items}">
+                
+            <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}">
-                    <Setter Property="HeaderTemplate">
-                        <Setter.Value>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Width="20" Margin="3" Source="Images/drive.png" />
-                                    <TextBlock VerticalAlignment="Center" Text="Some Folder"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </Setter.Value>
-                    </Setter>
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
                 </Style>
-            </TreeView.Resources>
-        </TreeView>
-    </Grid>
+            </TreeView.ItemContainerStyle>
+
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Margin="3" Source="{Binding Type,
+                            Converter={x:Static local:HeaderToImageConverter.Instance}}" />
+                        <TextBlock VerticalAlignment="Center" Text="{Binding Name}"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+
+            </TreeView>
+        </Grid>
+    
 </Window>

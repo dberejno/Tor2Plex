@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Tor2Plex.Directory.ViewModels;
 
 
 namespace Tor2Plex
@@ -12,7 +13,9 @@ namespace Tor2Plex
         #region Constuctor
         public DirectoryExplorerWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            this.DataContext = new DirectoryStructureViewModel();                   
         }
 
         #endregion
